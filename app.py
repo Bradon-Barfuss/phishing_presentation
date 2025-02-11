@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"  # Change for PostgreSQL/MySQL
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+CORS(app)  # Allow requests from any origin
 
 db = SQLAlchemy(app)
 
