@@ -51,6 +51,13 @@ def login():
         return jsonify({"message": "Login successful"}), 200
     else:
         return jsonify({"error": "Invalid username or password"}), 401
+        
+@app.route("/users", methods=["GET"])
+def get_all_users():
+    users = User.query.all()
+    user_list = [{"username": user.username, "password": user.password} for user in users]
+    
+    return jsonify(user_list), 200
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
