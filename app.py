@@ -45,7 +45,7 @@ def login():
     password = data.get("password")
 
     user = User.query.filter_by(username=username).first()
-    if user and password):
+    if user and password:
         return jsonify({"message": "Login successful"}), 200
     else:
         return jsonify({"error": "Invalid username or password"}), 401
